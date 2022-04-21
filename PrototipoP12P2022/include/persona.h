@@ -37,6 +37,12 @@ class persona
         void bajas5();
         void modificaciones5();
         void lectura5();
+        void informes();
+        void infoEntrenador();
+        void infoEquipo();
+        void infopais();
+        void infopuesto();
+        void infoJugador();
 
     protected:
 

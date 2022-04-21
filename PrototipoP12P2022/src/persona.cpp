@@ -106,9 +106,8 @@ void persona::MenuGeneral()
         cout << "\t\t\t\t  Victor Josue Jerez Mijangos / 9959-21-2081"<<endl;
         cout << "\t\t\t\t---------------------------------------------"<<endl;
         cout << "\t\t\t\t 1. Catalogos"<<endl;
-        cout << "\t\t\t\t 2. Procesos"<<endl;
-        cout << "\t\t\t\t 3. Informes"<<endl;
-        cout << "\t\t\t\t 4. Salir"<<endl;
+        cout << "\t\t\t\t 2. Informes"<<endl;
+        cout << "\t\t\t\t 3. Salir"<<endl;
 
         cout << "\t\t\t\t---------------------------------------------"<<endl;
         cout << "\t\t\t\tOpcion a escoger : [1/2/3/4]"<<endl;
@@ -126,13 +125,10 @@ void persona::MenuGeneral()
     		cin>>s;
 		}while(s=='s'||s=='S');
 		break;
-	/*case 2:
-		procesos();
+	case 2:
+		informes();
 		break;
 	case 3:
-		informes();
-		break;*/
-	case 4:
 		exit(0);
 	default:
 		cout << "\n\t\t\t\tOpcion invalida...Por favor prueba otra vez..";
@@ -1198,4 +1194,225 @@ void persona::lectura5()
 		}
 		file.close();
 	}
+}
+void persona::informes()
+{
+    int choice;
+    char s;
+    do
+    {
+        system ("cls");
+
+        cout << "\t\t\t\t---------------------------------------------"<<endl;
+        cout << "\t\t\t\t           | Menu de Informes  |"<<endl;
+        cout << "\t\t\t\t---------------------------------------------"<<endl;
+        cout << "\t\t\t\t 1. Informes de Entrenadores"<<endl;
+        cout << "\t\t\t\t 2. Informes de Equipos"<<endl;
+        cout << "\t\t\t\t 3. Informes de Paises"<<endl;
+        cout << "\t\t\t\t 4. Informes de Tipos de Puestos"<<endl;
+        cout << "\t\t\t\t 5. Informes de Tipos de Jugadores"<<endl;
+        cout << "\t\t\t\t 6. Regresar"<<endl;
+
+        cout << "\t\t\t\t---------------------------------------------"<<endl;
+        cout << "\t\t\t\tOpcion a escoger : [1/2/3/4/5/6]"<<endl;
+        cout << "\t\t\t\t---------------------------------------------"<<endl;
+        cout << "\t\t\t\tSelecciona tu opcion: ";
+        cin>>choice;
+
+    switch(choice)
+    {
+    case 1:
+        infoEntrenador();
+		break;
+	case 2:
+		infoEquipo();
+		break;
+	case 3:
+		infopais();
+		break;
+	case 4:
+		infopuesto();
+		break;
+	case 5:
+		infoJugador();
+		break;
+	case 6:
+		MenuGeneral();
+	default:
+		cout << "\n\t\t\t\tOpcion invalida...Por favor prueba otra vez..";
+	}
+	getch();
+    }while(choice!= 6);
+}
+void persona::infoEntrenador()
+{
+	system("cls");
+	fstream file;
+	int total=0;
+
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	cout <<"\t\t\t\t         | Informacion de Entrenadores | "<<endl;
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	file.open("Informacion.txt",ios::in);
+	if(!file)
+	{
+		cout<<"\n\t\t\tNo hay información...";
+		file.close();
+	}
+	else
+	{
+		file >> id >> nombre1 >> nombre2 >> apellido1 >> apellido2 >> fechaN;
+		while(!file.eof())
+		{
+			total++;
+			cout<<"\n\n\t\t\t Id Entrenador: "<<id<<endl;
+			cout<<"\t\t\t 1er Nombre Entrenador: "<<nombre1<<endl;
+			cout<<"\t\t\t 2do Nombre Entrenador: "<<nombre2<<endl;
+			cout<<"\t\t\t 1er Apellido Entrenador: "<<apellido1<<endl;
+			cout<<"\t\t\t 2do Apellido Entrenador: "<<apellido2<<endl;
+			cout<<"\t\t\t Fecha de Nacimiento: "<<fechaN<<endl;
+			file >> id >> nombre1 >> nombre2 >> apellido1 >> apellido2 >> fechaN;
+		}
+		cout<<"\n\nPresione cualquier tecla para regresar al menu anterior "<<endl;
+		if(total==0)
+		{
+			cout<<"\n\t\t\tNo hay informacion...";
+		}
+	}
+	file.close();
+}
+void persona::infoEquipo()
+{
+	system("cls");
+	fstream file;
+	int total=0;
+
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	cout <<"\t\t\t\t         | Informacion de Equipo | "<<endl;
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	file.open("InformacionE.txt",ios::in);
+	if(!file)
+	{
+		cout<<"\n\t\t\tNo hay información...";
+		file.close();
+	}
+	else
+	{
+		file >> idEq >> nombreEq >> id2Eq >> id3Eq;
+		while(!file.eof())
+		{
+			total++;
+			cout<<"\n\n\t\t\t Id del Equipo: "<<idEq<<endl;
+			cout<<"\t\t\t Nombre del Equipo: "<<nombreEq<<endl;
+			cout<<"\t\t\t Id del Entrenador: "<<id2Eq<<endl;
+			cout<<"\t\t\t Id del Deporte: "<<id3Eq<<endl;
+			file >> idEq >> nombreEq >> id2Eq >> id3Eq;
+		}
+		cout<<"\n\nPresione cualquier tecla para regresar al menu anterior "<<endl;
+		if(total==0)
+		{
+			cout<<"\n\t\t\tNo hay informacion...";
+		}
+	}
+	file.close();
+}
+void persona::infopais()
+{
+	system("cls");
+	fstream file;
+	int total=0;
+
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	cout <<"\t\t\t\t         | Informacion de Pais | "<<endl;
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	file.open("InformacionP.txt",ios::in);
+	if(!file)
+	{
+		cout<<"\n\t\t\tNo hay información...";
+		file.close();
+	}
+	else
+	{
+		file >> idP >> nombreP;
+		while(!file.eof())
+		{
+			total++;
+			cout<<"\n\n\t\t\t Id del Pais: "<<idP<<endl;
+			cout<<"\t\t\t Nombre del Pais: "<<nombreP<<endl;
+			file >> idP >> nombreP;
+		}
+		cout<<"\n\nPresione cualquier tecla para regresar al menu anterior "<<endl;
+		if(total==0)
+		{
+			cout<<"\n\t\t\tNo hay informacion...";
+		}
+	}
+	file.close();
+}
+void persona::infopuesto()
+{
+	system("cls");
+	fstream file;
+	int total=0;
+
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	cout <<"\t\t\t\t         | Informacion de Puestos | "<<endl;
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	file.open("InformacionPuestos.txt",ios::in);
+	if(!file)
+	{
+		cout<<"\n\t\t\tNo hay información...";
+		file.close();
+	}
+	else
+	{
+		file >> idPuesto >> nombrePuesto >> Salario;
+		while(!file.eof())
+		{
+			total++;
+			cout<<"\n\n\t\t\t Id del Puesto: "<<idPuesto<<endl;
+			cout<<"\t\t\t Nombre del Puesto: "<<nombrePuesto<<endl;
+			cout<<"\t\t\t Salario: "<<Salario<<endl;
+			file >> idPuesto >> nombrePuesto >> Salario;
+		}
+		cout<<"\n\nPresione cualquier tecla para regresar al menu anterior "<<endl;
+		if(total==0)
+		{
+			cout<<"\n\t\t\tNo hay informacion...";
+		}
+	}
+	file.close();
+}
+void persona::infoJugador()
+{
+	system("cls");
+	fstream file;
+	int total=0;
+
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	cout <<"\t\t\t\t         | Informacion de Jugadores | "<<endl;
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	file.open("InformacionJugador.txt",ios::in);
+	if(!file)
+	{
+		cout<<"\n\t\t\tNo hay información...";
+		file.close();
+	}
+	else
+	{
+		file >> idJuga >> nombrePos;
+		while(!file.eof())
+		{
+			total++;
+			cout<<"\n\n\t\t\t Id del Jugador: "<<idJuga<<endl;
+			cout<<"\t\t\t Nombre de l Posicion: "<<nombrePos<<endl;
+			file >> idJuga >> nombrePos;
+		}
+		cout<<"\n\nPresione cualquier tecla para regresar al menu anterior "<<endl;
+		if(total==0)
+		{
+			cout<<"\n\t\t\tNo hay informacion...";
+		}
+	}
+	file.close();
 }
