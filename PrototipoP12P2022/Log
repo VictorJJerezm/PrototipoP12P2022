@@ -1,0 +1,59 @@
+commit c2fada6b98812de36b189108924147d5673193e0
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Thu Apr 21 14:35:41 2022 -0600
+
+    Se agregan unos comentarios
+
+commit 5e76c62bfc6f375b51da19a4c977b8fdf4329fe4
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Thu Apr 21 14:28:51 2022 -0600
+
+    Se agrega apartado de reportes de info
+
+commit ceabe5735c5714055cd660294f2937572878107e
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Thu Apr 21 13:53:56 2022 -0600
+
+    Se agrega CRUD de Jugador
+
+commit 201f0666e63f9a566c743d81c99273633876f574
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Thu Apr 21 13:38:06 2022 -0600
+
+    Se agrega CRUD de Puestos
+
+commit 307f8cbb936582482104642c9159a40630c9ea1e
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Thu Apr 21 13:18:12 2022 -0600
+
+    Se agrega CRUD de pais
+
+commit 6fa00167b7ffc10273dbe81b98ee1b6b6e2ffec9
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Thu Apr 21 12:55:57 2022 -0600
+
+    Se agrega CRUD de Equipos
+
+commit 919716e57224a9c898731e359cfb544acf71b6c8
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Thu Apr 21 12:27:34 2022 -0600
+
+    Se agrega CRUD de entrenador
+
+commit 8a02f28983f1e1912ddd4bf6e01c228e975da870
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Thu Apr 21 11:26:21 2022 -0600
+
+    Menu de Catalogos
+
+commit 14dac795c304eac3e468a9d9c7d893cadef0460e
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Thu Apr 21 11:09:58 2022 -0600
+
+    Se agrega Login + MenuGeneral
+
+commit 39865da8d0669935bb2a705a40a7863ac0781d1c
+Author: VictorJJerezm <98106604+VictorJJerezm@users.noreply.github.com>
+Date:   Thu Apr 21 10:36:50 2022 -0600
+
+    Initial commit
