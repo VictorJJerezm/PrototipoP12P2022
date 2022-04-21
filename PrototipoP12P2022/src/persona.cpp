@@ -809,3 +809,202 @@ void persona::lectura3()
 		file.close();
 	}
 }
+void persona::puesto()
+{
+    int choice;
+	char x;
+	do
+    {
+	system("cls");
+
+	cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	cout<<"\t\t\t\t        |  CRUD - Puestos |"<<endl;
+	cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	cout<<"\t\t\t\t 1. Altas"<<endl;
+	cout<<"\t\t\t\t 2. Bajas"<<endl;
+	cout<<"\t\t\t\t 3. Modificaciones"<<endl;
+	cout<<"\t\t\t\t 4. Lectura"<<endl;
+	cout<<"\t\t\t\t 5. Regresar"<<endl;
+
+	cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	cout<<"\t\t\t\tOpcion a escoger:[1/2/3/4/5]"<<endl;
+	cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	cout<<"\t\t\t\tIngresa tu Opcion: ";
+    cin>>choice;
+
+    switch(choice)
+    {
+    case 1:
+    	do
+    	{
+    		altas4();
+    		cout<<"\n\t\t\t Agrega otra persona(Y,N): ";
+    		cin>>x;
+		}while(x=='y'||x=='Y');
+		break;
+	case 2:
+		bajas4();
+		break;
+	case 3:
+		modificaciones4();
+		break;
+	case 4:
+		lectura4();
+		break;
+	case 5:
+		catalogos();
+	default:
+		cout<<"\n\t\t\t Opcion invalida...";
+	}
+	getch();
+    }while(choice!= 5);
+}
+void persona::altas4()
+{
+	system("cls");
+	fstream file;
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	cout <<"\t\t\t\t     | Ingresar informacion Puestos | "<<endl;
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	cout <<"\t\t\t\tIngresa Id del Puesto: ";
+	cin >>idPuesto;
+	cout <<"\t\t\t\tIngresa el Nombre del Puesto: ";
+	cin >>nombrePuesto;
+    cout <<"\t\t\t\tIngresa el Salario: ";
+	cin >>Salario;
+	cout <<"\n\n\t\t\t\t ¡El ingreso fue exitoso! ";
+	file.open("InformacionPuestos.txt", ios::app | ios::out | ios::binary);
+	file<<std::left<<std::setw(10)<< idPuesto <<std::left<<std::setw(10)<< nombrePuesto <<std::left<<std::setw(10)<< Salario<< "\n";
+	file.close();
+}
+void persona::bajas4()
+{
+	system("cls");
+	fstream file,file1;
+	string participant_codigo;
+	int found=0;
+	cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	cout <<"\t\t\t\t         | Informacion a Borrar | "<<endl;
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	file.open("InformacionPuestos.txt",ios::in);
+	if(!file)
+	{
+		cout<<"\n\t\t\tNo hay informacion...";
+		file.close();
+	}
+	else
+	{
+		cout<<"\n Ingrese el Id del Puesto que quiere borrar: ";
+		cin>>participant_codigo;
+		file1.open("registros.txt",ios::app | ios::out);
+		file >> idPuesto >> nombrePuesto >> Salario;
+		while(!file.eof())
+		{
+			if(participant_codigo!= idPuesto)
+			{
+				file1<<std::left<<std::setw(10)<< idPuesto <<std::left<<std::setw(10)<< nombrePuesto <<std::left<<std::setw(10)<< Salario << "\n";
+			}
+			else
+			{
+				found++;
+				cout << "\n\t\t\tBorrado de informacion exitoso";
+			}
+			file >> idPuesto >> nombrePuesto >> Salario;
+		}
+		if(found==0)
+		{
+			cout<<"\n\t\t\t Id del Puesto no encontrado...";
+		}
+		file1.close();
+		file.close();
+		remove("InformacionPuestos.txt");
+		rename("registros.txt","InformacionPuestos.txt");
+		}
+}
+void persona::modificaciones4()
+{
+	system("cls");
+	fstream file,file1;
+	string participant_codigo;
+	int found=0;
+	cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	cout <<"\t\t\t\t         | Informacion a Modificar | "<<endl;
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	file.open("InformacionPuestos.txt",ios::in);
+	if(!file)
+	{
+		cout<<"\n\t\t\tNo hay informacion..,";
+		file.close();
+	}
+	else
+	{
+		cout<<"\n Ingrese Id del Puesto que quiere modificar: ";
+		cin>>participant_codigo;
+		file1.open("registros.txt",ios::app | ios::out);
+		file >> idPuesto >> nombrePuesto >> Salario;
+		while(!file.eof())
+		{
+			if(participant_codigo!=idPuesto)
+			{
+			 file1<<std::left<<std::setw(10)<< idPuesto <<std::left<<std::setw(10)<< nombrePuesto <<std::left<<std::setw(10)<< Salario << "\n";
+			}
+			else
+			{
+				cout<<"\t\t\tIngrese codigo del Puesto: ";
+				cin>>idPuesto;
+				cout<<"\t\t\tIngrese Nombre del Puesto: ";
+				cin>>nombrePuesto;
+				cout<<"\t\t\tIngrese Salario: ";
+				cin>>Salario;
+				file1<<std::left<<std::setw(10)<< idPuesto <<std::left<<std::setw(10)<< nombrePuesto <<std::left<<std::setw(10)<< Salario << "\n";
+				found++;
+			}
+			file >> idPuesto >> nombrePuesto >> Salario;
+
+		}
+		file1.close();
+		file.close();
+		remove("InformacionPuestos.txt");
+		rename("registros.txt","InformacionPuestos.txt");
+	}
+}
+void persona::lectura4()
+{
+	system("cls");
+	fstream file;
+	int found=0;
+	file.open("InformacionPuestos.txt",ios::in);
+	if(!file)
+	{
+		cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	    cout <<"\t\t\t\t         | Informacion Solicitada | "<<endl;
+	    cout <<"\t\t\t\t---------------------------------------------"<<endl;
+		cout<<"\n\t\t\tNo hay informacion...";
+	}
+	else
+	{
+		string participant_codigo;
+		cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	    cout <<"\t\t\t\t         | Informacion Solicitada | "<<endl;
+	    cout <<"\t\t\t\t---------------------------------------------"<<endl;
+		cout<<"\nIngrese id del Puesto que quiere buscar: ";
+		cin>>participant_codigo;
+		file >> idPuesto >> nombrePuesto >> Salario;
+		while(!file.eof())
+		{
+			if(participant_codigo==idPuesto)
+			{
+				cout<<"\n\n\t\t\t ID del Puesto: "<<idPuesto<<endl;
+				cout<<"\t\t\t Nombre del Puesto: "<<nombrePuesto<<endl;
+				cout<<"\t\t\t Salario: "<<nombrePuesto<<endl;
+				found++;
+			}
+			file >> idPuesto >> nombrePuesto >> Salario;
+		}
+		if(found==0)
+		{
+			cout<<"\n\t\t\t Puesto no encontrado...";
+		}
+		file.close();
+	}
+}
