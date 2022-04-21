@@ -118,6 +118,63 @@ void persona::MenuGeneral()
 
     switch(choice)
     {
+    case 1:
+    	do
+    	{
+    		catalogos();
+    		cout << "\t\t\t\t ¿Quieres seguir en el apartado de Mantenimientos? (S/N)";
+    		cin>>s;
+		}while(s=='s'||s=='S');
+		break;
+	/*case 2:
+		generacionN();
+		break;
+	case 3:
+		informesN();
+		break;
+	case 4:
+		transferenciaB();
+		break;
+	case 5:
+		generacionP();
+		break;
+    case 6:
+        impuestos();
+        break;*/
+	case 4:
+		exit(0);
+	default:
+		cout << "\n\t\t\t\tOpcion invalida...Por favor prueba otra vez..";
+	}
+	getch();
+    }while(choice!= 4);
+}
+void persona::catalogos()
+{
+    int choice;
+    char s;
+    do
+    {
+        system ("cls");
+
+        cout << "\t\t\t\t---------------------------------------------"<<endl;
+        cout << "\t\t\t\t           | Menu de Catalogos  |"<<endl;
+        cout << "\t\t\t\t---------------------------------------------"<<endl;
+        cout << "\t\t\t\t 1. Entrenador"<<endl;
+        cout << "\t\t\t\t 2. Equipo"<<endl;
+        cout << "\t\t\t\t 3. Pais"<<endl;
+        cout << "\t\t\t\t 4. Tipo de Puestos"<<endl;
+        cout << "\t\t\t\t 5. Tipo de Jugadors"<<endl;
+        cout << "\t\t\t\t 6. Salir"<<endl;
+
+        cout << "\t\t\t\t---------------------------------------------"<<endl;
+        cout << "\t\t\t\tOpcion a escoger : [1/2/3/4/5/6]"<<endl;
+        cout << "\t\t\t\t---------------------------------------------"<<endl;
+        cout << "\t\t\t\tSelecciona tu opcion: ";
+        cin>>choice;
+
+    switch(choice)
+    {
     /*case 1:
     	do
     	{
@@ -141,11 +198,11 @@ void persona::MenuGeneral()
     case 6:
         impuestos();
         break;*/
-	case 4:
-		exit(0);
+	case 6:
+		MenuGeneral();
 	default:
 		cout << "\n\t\t\t\tOpcion invalida...Por favor prueba otra vez..";
 	}
 	getch();
-    }while(choice!= 4);
+    }while(choice!= 6);
 }
