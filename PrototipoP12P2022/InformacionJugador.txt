@@ -1,1 +1,3 @@
-1         Delantero 
+9         Portero   
+2         Delantero 
+1         Centro    

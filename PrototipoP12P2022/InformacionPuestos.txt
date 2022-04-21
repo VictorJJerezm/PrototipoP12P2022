@@ -1,1 +1,2 @@
 1         Auditor   10000     
+4         Cajero    9000      

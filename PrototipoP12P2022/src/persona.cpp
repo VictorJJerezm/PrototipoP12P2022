@@ -28,7 +28,7 @@ void persona::menuLog()
     {
     system("cls");
     cout << "\t\t\t\t---------------------------------------------"<<endl;
-    cout << "\t\t\t\t   | Sistema de Recursos Humanos - Grupo 6 |"<<endl;
+    cout << "\t\t\t\t      | Login - Segundo Parcial |"<<endl;
     cout << "\t\t\t\t---------------------------------------------"<<endl;
     cout << "\t\t\t\t 1. Ingresar"<<endl;
     cout << "\t\t\t\t 2. Salir"<<endl;
