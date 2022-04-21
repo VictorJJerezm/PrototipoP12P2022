@@ -127,20 +127,11 @@ void persona::MenuGeneral()
 		}while(s=='s'||s=='S');
 		break;
 	/*case 2:
-		generacionN();
+		procesos();
 		break;
 	case 3:
-		informesN();
-		break;
-	case 4:
-		transferenciaB();
-		break;
-	case 5:
-		generacionP();
-		break;
-    case 6:
-        impuestos();
-        break;*/
+		informes();
+		break;*/
 	case 4:
 		exit(0);
 	default:
@@ -183,11 +174,11 @@ void persona::catalogos()
     		cin>>s;
 		}while(s=='s'||s=='S');
 		break;
-	/*case 2:
-		generacionN();
+	case 2:
+		equipo();
 		break;
-	case 3:
-		informesN();
+	/*case 3:
+		pais();
 		break;
 	case 4:
 		transferenciaB();
@@ -254,7 +245,7 @@ void persona::entrenador()
 		cout<<"\n\t\t\t Opcion invalida...";
 	}
 	getch();
-    }while(choice!= 6);
+    }while(choice!= 5);
 }
 void persona::altas1()
 {
@@ -416,6 +407,210 @@ void persona::lectura1()
 		if(found==0)
 		{
 			cout<<"\n\t\t\t Entrenador no encontrado...";
+		}
+		file.close();
+	}
+}
+void persona::equipo()
+{
+    int choice;
+	char x;
+	do
+    {
+	system("cls");
+
+	cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	cout<<"\t\t\t\t        |  CRUD - Entrenador  |"<<endl;
+	cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	cout<<"\t\t\t\t 1. Altas"<<endl;
+	cout<<"\t\t\t\t 2. Bajas"<<endl;
+	cout<<"\t\t\t\t 3. Modificaciones"<<endl;
+	cout<<"\t\t\t\t 4. Lectura"<<endl;
+	cout<<"\t\t\t\t 5. Regresar"<<endl;
+
+	cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	cout<<"\t\t\t\tOpcion a escoger:[1/2/3/4/5]"<<endl;
+	cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	cout<<"\t\t\t\tIngresa tu Opcion: ";
+    cin>>choice;
+
+    switch(choice)
+    {
+    case 1:
+    	do
+    	{
+    		altas2();
+    		cout<<"\n\t\t\t Agrega otra persona(Y,N): ";
+    		cin>>x;
+		}while(x=='y'||x=='Y');
+		break;
+	case 2:
+		bajas2();
+		break;
+	case 3:
+		modificaciones2();
+		break;
+	case 4:
+		lectura2();
+		break;
+	case 5:
+		catalogos();
+	default:
+		cout<<"\n\t\t\t Opcion invalida...";
+	}
+	getch();
+    }while(choice!= 5);
+}
+void persona::altas2()
+{
+	system("cls");
+	fstream file;
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	cout <<"\t\t\t\t     | Ingresar informacion Equipo | "<<endl;
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	cout <<"\t\t\t\tIngresa Id del Equipo: ";
+	cin >>idEq;
+	cout <<"\t\t\t\tIngresa el Nombre del Equipo: ";
+	cin >>nombreEq;
+	cout <<"\t\t\t\tIngresa Id entrenador Equipo: ";
+	cin >>id2Eq;
+	cout <<"\t\t\t\tIngresa el Id del Tipo de Deporte: ";
+	cin >>id3Eq;
+	cout <<"\n\n\t\t\t\t ¡El ingreso fue exitoso! ";
+	file.open("InformacionE.txt", ios::app | ios::out | ios::binary);
+	file<<std::left<<std::setw(10)<< idEq <<std::left<<std::setw(10)<< nombreEq <<std::left<<std::setw(10)<< id2Eq <<std::left<<std::setw(10)<< id3Eq << "\n";
+	file.close();
+}
+void persona::bajas2()
+{
+	system("cls");
+	fstream file,file1;
+	string participant_codigo;
+	int found=0;
+	cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	cout <<"\t\t\t\t         | Informacion a Borrar | "<<endl;
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	file.open("InformacionE.txt",ios::in);
+	if(!file)
+	{
+		cout<<"\n\t\t\tNo hay informacion...";
+		file.close();
+	}
+	else
+	{
+		cout<<"\n Ingrese el Id del Equipo que quiere borrar: ";
+		cin>>participant_codigo;
+		file1.open("registros.txt",ios::app | ios::out);
+		file >> idEq >> nombreEq >> id2Eq >> id3Eq;
+		while(!file.eof())
+		{
+			if(participant_codigo!= idEq)
+			{
+				file1<<std::left<<std::setw(10)<< idEq <<std::left<<std::setw(10)<< nombreEq <<std::left<<std::setw(10)<< id2Eq <<std::left<<std::setw(10)<< id3Eq << "\n";
+			}
+			else
+			{
+				found++;
+				cout << "\n\t\t\tBorrado de informacion exitoso";
+			}
+			file >> idEq >> nombreEq  >> id2Eq >> id3Eq;
+		}
+		if(found==0)
+		{
+			cout<<"\n\t\t\t Id del Equipo no encontrado...";
+		}
+		file1.close();
+		file.close();
+		remove("InformacionE.txt");
+		rename("registros.txt","InformacionE.txt");
+		}
+}
+void persona::modificaciones2()
+{
+	system("cls");
+	fstream file,file1;
+	string participant_codigo;
+	int found=0;
+	cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	cout <<"\t\t\t\t         | Informacion a Modificar | "<<endl;
+	cout <<"\t\t\t\t---------------------------------------------"<<endl;
+	file.open("InformacionE.txt",ios::in);
+	if(!file)
+	{
+		cout<<"\n\t\t\tNo hay informacion..,";
+		file.close();
+	}
+	else
+	{
+		cout<<"\n Ingrese Id del Equipo que quiere modificar: ";
+		cin>>participant_codigo;
+		file1.open("registros.txt",ios::app | ios::out);
+		file >> idEq >> nombreEq >> id2Eq >> id3Eq;
+		while(!file.eof())
+		{
+			if(participant_codigo!=idEq)
+			{
+			 file1<<std::left<<std::setw(10)<< idEq <<std::left<<std::setw(10)<< nombreEq <<std::left<<std::setw(10)<< id2Eq <<std::left<<std::setw(10)<< id3Eq << "\n";
+			}
+			else
+			{
+				cout<<"\t\t\tIngrese codigo del Equipo: ";
+				cin>>idEq;
+				cout<<"\t\t\tIngrese Nombre del Equipo: ";
+				cin>>nombreEq;
+				cout<<"\t\t\tIngrese Id del Entrenador: ";
+				cin>>id2Eq;
+				cout<<"\t\t\tIngrese Id del Deporte: ";
+				cin>>id3Eq;
+				file1<<std::left<<std::setw(10)<< idEq <<std::left<<std::setw(10)<< nombreEq <<std::left<<std::setw(10)<< id2Eq <<std::left<<std::setw(10)<< id3Eq << "\n";
+				found++;
+			}
+			file >> idEq >> nombreEq >> id2Eq >> id3Eq;
+
+		}
+		file1.close();
+		file.close();
+		remove("InformacionE.txt");
+		rename("registros.txt","InformacionE.txt");
+	}
+}
+void persona::lectura2()
+{
+	system("cls");
+	fstream file;
+	int found=0;
+	file.open("InformacionE.txt",ios::in);
+	if(!file)
+	{
+		cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	    cout <<"\t\t\t\t         | Informacion Solicitada | "<<endl;
+	    cout <<"\t\t\t\t---------------------------------------------"<<endl;
+		cout<<"\n\t\t\tNo hay informacion...";
+	}
+	else
+	{
+		string participant_codigo;
+		cout<<"\t\t\t\t---------------------------------------------"<<endl;
+	    cout <<"\t\t\t\t         | Informacion Solicitada | "<<endl;
+	    cout <<"\t\t\t\t---------------------------------------------"<<endl;
+		cout<<"\nIngrese id del Equipo que quiere buscar: ";
+		cin>>participant_codigo;
+		file >> idEq >> nombreEq >> id2Eq >> id3Eq;
+		while(!file.eof())
+		{
+			if(participant_codigo==idEq)
+			{
+				cout<<"\n\n\t\t\t ID del Equipo: "<<idEq<<endl;
+				cout<<"\t\t\t Nombre del Equipo: "<<nombreEq<<endl;
+				cout<<"\t\t\t ID del Entrenador "<<id2Eq<<endl;
+				cout<<"\t\t\t ID del Deporte: "<<id3Eq<<endl;
+				found++;
+			}
+			file >> idEq >> nombreEq >> id2Eq >> id3Eq;
+		}
+		if(found==0)
+		{
+			cout<<"\n\t\t\t Equipo no encontrado...";
 		}
 		file.close();
 	}
