@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1650568737 source:c:\users\vaio\proyectos\prototipop12p2022\prototipop12p2022\main.cpp
+1650569942 source:c:\users\vaio\proyectos\prototipop12p2022\prototipop12p2022\main.cpp
 	<iostream>
 	"persona.h"
 
-1650568737 c:\users\vaio\proyectos\prototipop12p2022\prototipop12p2022\include\persona.h
+1650570724 c:\users\vaio\proyectos\prototipop12p2022\prototipop12p2022\include\persona.h
 
 1650569544 source:c:\users\vaio\proyectos\prototipop12p2022\prototipop12p2022\src\persona.cpp
 	<iostream>

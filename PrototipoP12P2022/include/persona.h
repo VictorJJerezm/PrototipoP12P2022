@@ -32,6 +32,11 @@ class persona
         void bajas4();
         void modificaciones4();
         void lectura4();
+        void jugador();
+        void altas5();
+        void bajas5();
+        void modificaciones5();
+        void lectura5();
 
     protected:
 
@@ -40,6 +45,7 @@ class persona
         string idEq, nombreEq, id2Eq, id3Eq;
         string idP, nombreP;
         string idPuesto, nombrePuesto, Salario;
+        string idJuga, nombrePos;
 };
 
 #endif // PERSONA_H
